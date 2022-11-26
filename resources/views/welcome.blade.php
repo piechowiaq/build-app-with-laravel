@@ -24,13 +24,26 @@
     <body class="bg-blue-900 text-blue-100 pt-20">
         <div class="max-w-5xl mx-auto">
             {{-- for to create a tweet --}}
-            <div>form goes here</div>
+            <div>
+                <form action="{{route('tweets.store')}}" method="POST" class="flex mb-10">
+                    @csrf
+                    <input type="text" name="body" class="w-full p-2 m-2 border-2 border-blue-500 text-black"  placeholder="What's happening">
+                    <button type="submit" class="bg-yellow-300 text-gray-800 py-3 m-2 px-6 rounded-full">Tweet</button>
+
+                </form>
+
+            </div>
 
             {{-- list all our tweets--}}
             <div>
                 @foreach($tweets as $tweet)
                     <div class="border-b-2 border-blue-500 p-2">
-                        <div>{{ $tweet->body }}</div>
+                        <form action="{{route('tweets.update', $tweet)}}" method="POST" class="flex justify-between">
+                            @csrf
+                            @method('PUT')
+                            <input type="text" value="{{ $tweet->body }}" name="body" class="w-full mr-2 bg-blue-900 text-blue-100">
+                            <button type="submit">Edit</button>
+                        </form>
                     </div>
                 @endforeach
             </div>

@@ -10,4 +10,5 @@ class Tweet extends Model
     use HasFactory;
 
     public $fillable = ['body'];
+
 }

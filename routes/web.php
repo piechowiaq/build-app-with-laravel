@@ -23,4 +23,4 @@ Route::get('/', function () {
     return view('welcome', [ 'tweets' => $tweets]);
 });
 
-Route::resource('tweets', TweetController::class)->except('index');
+Route::resource('tweets', TweetController::class)->except('index', 'create', 'show');
