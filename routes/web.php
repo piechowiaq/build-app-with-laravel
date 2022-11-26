@@ -24,9 +24,9 @@ Route::get('/', function () {
     return view('welcome', [ 'tweets' => $tweets]);
 });
 
-Route::resource('tweets', TweetController::class)->except('index', 'create', 'show');
+Route::resource('tweets', TweetController::class)->except('index', 'create', 'show', 'destroy');
 
 
 Route::prefix('api')->group(function () {
-    Route::apiResource('tweets', TweetApiController::class);
+    Route::apiResource('tweets', TweetApiController::class)->except('store', 'update', 'destroy');
 });
