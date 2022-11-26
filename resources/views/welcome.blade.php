@@ -27,7 +27,13 @@
             <div>form goes here</div>
 
             {{-- list all our tweets--}}
-            <div>list of tweets goes here</div>
+            <div>
+                @foreach($tweets as $tweet)
+                    <div class="border-b-2 border-blue-500 p-2">
+                        <div>{{ $tweet->body }}</div>
+                    </div>
+                @endforeach
+            </div>
         </div>
     </body>
 </html>
