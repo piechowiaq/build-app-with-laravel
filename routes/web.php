@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Tweet;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    $tweets = Tweet::all();
+
+    return view('welcome', [ 'tweet' => $tweets]);
 });
+
+Route::resource('tweets', \App\Http\Controllers\TweetController::class)->except('index');
